@@ -453,18 +453,6 @@ require('lazy').setup({
         },
         jedi_language_server = {},
         rubocop = {},
-        solargraph = {
-          settings = {
-            solargraph = {
-              completion = true,
-              diagnostic = true,
-              folding = true,
-              references = true,
-              rename = true,
-              symbols = true,
-            },
-          },
-        },
         tsserver = {},
       }
 
@@ -482,7 +470,6 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         'rubocop',
-        'solargraph',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -628,6 +615,8 @@ require('lazy').setup({
     end,
   },
 
+  { 'neanias/everforest-nvim' },
+
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is
@@ -639,6 +628,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- vim.cmd.colorscheme 'tokyonight-night'
       vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like
@@ -688,6 +678,7 @@ require('lazy').setup({
 
   { 'sindrets/diffview.nvim' },
   { 'tpope/vim-fugitive' },
+  { 'AlexvZyl/nordic.nvim' },
 
   {
     'kdheepak/lazygit.nvim',
