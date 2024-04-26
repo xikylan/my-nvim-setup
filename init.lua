@@ -39,7 +39,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { 'tpope/vim-sleuth' }
+  { 'tpope/vim-sleuth' },
 
   { 'numToStr/Comment.nvim', opts = {} },
 
@@ -86,7 +86,7 @@ require('lazy').setup({
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      { 
+      {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         cond = function()
@@ -211,7 +211,7 @@ require('lazy').setup({
     end,
   },
 
-  { 
+  {
     'stevearc/conform.nvim',
     keys = {
       {
@@ -291,7 +291,7 @@ require('lazy').setup({
 
   { 'neanias/everforest-nvim' },
 
-  { 
+  {
     'folke/tokyonight.nvim',
     priority = 1000,
     init = function()
@@ -302,7 +302,7 @@ require('lazy').setup({
 
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  { 
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
@@ -380,6 +380,23 @@ require('lazy').setup({
       },
     },
   },
+
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('nvim-tree').setup {
+        view = {
+          width = '30%',
+          side = 'right',
+        },
+      }
+    end,
+  },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
@@ -423,6 +440,6 @@ vim.keymap.set('n', '<leader>lg', ':LazyGit<CR>', { desc = '[L]azy[G]it' })
 vim.keymap.set('n', '<leader>pry', "orequire 'pry'<CR>binding.pry<ESC>", { desc = "require 'pry'; binding.pry" })
 vim.keymap.set('n', '<leader>ft', ':FloatermToggle<CR>', { desc = 'Toggle Floaterm' })
 vim.keymap.set('n', '<leader>z', ':ZenMode<CR>', { desc = 'ZenMode' })
-vim.keymap.set('n', '<leader>cpo', ':CopilotChatOpen', { desc = 'CopilotChatOpen' })
+vim.keymap.set('n', '<leader>cp', ':CopilotChatOpen<CR>', { desc = 'CopilotChatOpen' })
+vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
 vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope file_browser path=%:p:h select_buffer=true<CR>', { noremap = true })
-
